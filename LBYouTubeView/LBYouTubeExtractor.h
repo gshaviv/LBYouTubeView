@@ -31,6 +31,8 @@ typedef enum {
 @property (nonatomic, weak) IBOutlet id <LBYouTubeExtractorDelegate> delegate;
 @property (nonatomic, strong) LBYouTubeExtractorCompletionBlock completionBlock;
 @property (nonatomic, strong) NSString* extractionExpression;
+@property (nonatomic) NSUInteger extractionCaptureGroup;
+
 
 -(id)initWithURL:(NSURL*)videoURL quality:(LBYouTubeVideoQuality)quality;
 -(id)initWithID:(NSString*)videoID quality:(LBYouTubeVideoQuality)quality;

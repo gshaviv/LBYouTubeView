@@ -37,6 +37,7 @@ NSInteger const LBYouTubePlayerExtractorErrorCodeNoJSONData   =    3;
         self.youTubeURL = videoURL;
         self.quality = videoQuality;
         self.extractionExpression = @"(?!\\\\\")http[^\"]*?itag=[^\"]*?(?=\\\\\")";
+        self.extractionCaptureGroup = 0;
     }
     return self;
 }
@@ -105,7 +106,7 @@ NSInteger const LBYouTubePlayerExtractorErrorCodeNoJSONData   =    3;
             checkingResult = [videos lastObject];
         }
         
-        NSMutableString* streamURL = [NSMutableString stringWithString: [string substringWithRange:checkingResult.range]];
+        NSMutableString* streamURL = [NSMutableString stringWithString: [string substringWithRange:[checkingResult rangeAtIndex:_extractionCaptureGroup]]];
         [streamURL replaceOccurrencesOfString:@"\\\\u0026" withString:@"&" options:NSCaseInsensitiveSearch range:NSMakeRange(0, streamURL.length)];
         [streamURL replaceOccurrencesOfString:@"\\\\\\" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, streamURL.length)];
                 
