@@ -51,14 +51,15 @@ NSInteger const LBYouTubePlayerExtractorErrorCodeNoJSONData   =    3;
 #pragma mark Other Methods
 
 -(void)startExtracting {
-    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    NSArray *cookies = [cookieStorage cookies];
-    for (NSHTTPCookie *cookie in cookies) {
-        if ([cookie.domain rangeOfString:@"youtube"].location != NSNotFound) {
-            [cookieStorage deleteCookie:cookie];
-        }
-    }
-    
+    LogVerbose(@"Starting extract %@",self.youTubeURL);
+//    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+//    NSArray *cookies = [cookieStorage cookies];
+//    for (NSHTTPCookie *cookie in cookies) {
+//        if ([cookie.domain rangeOfString:@"youtube"].location != NSNotFound) {
+//            [cookieStorage deleteCookie:cookie];
+//        }
+//    }
+
     if (!self.buffer || !self.extractedURL) {
         NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:self.youTubeURL];
         [request setValue:kUserAgent forHTTPHeaderField:@"User-Agent"];
