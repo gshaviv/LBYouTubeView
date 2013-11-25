@@ -113,8 +113,9 @@ NSInteger const LBYouTubePlayerExtractorErrorCodeNoJSONData   =    3;
                 
         return [NSURL URLWithString:streamURL];
     }
-    
-    *error = [NSError errorWithDomain:kLBYouTubePlayerExtractorErrorDomain code:2 userInfo:[NSDictionary dictionaryWithObject:@"Couldn't find the stream URL." forKey:NSLocalizedDescriptionKey]];
+
+    if (error)
+        *error = [NSError errorWithDomain:kLBYouTubePlayerExtractorErrorDomain code:2 userInfo:[NSDictionary dictionaryWithObject:@"Couldn't find the stream URL." forKey:NSLocalizedDescriptionKey]];
     
     return nil;
 }
