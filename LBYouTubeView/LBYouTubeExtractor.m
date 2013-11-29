@@ -100,7 +100,7 @@ NSInteger const LBYouTubePlayerExtractorErrorCodeNoJSONData   =    3;
             checkingResult = [videos objectAtIndex:0];
         }
         else if (self.quality == LBYouTubeVideoQualityMedium) {
-            unsigned int index = MIN(videos.count-1, 1U);
+            NSUInteger index = MIN(videos.count-1, 1U);
             checkingResult= [videos objectAtIndex:index];
         }
         else {
